@@ -1,0 +1,11 @@
+Dockerfile
+.dockerignore
+.gitignore
+build
+node_modules
+.git
+build.sh
+.circleci
+Dockerfile
+*.dockerfile
+*.md
