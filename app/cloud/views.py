@@ -2,4 +2,4 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse("Page of administrator")
+    return HttpResponse("Main page")
