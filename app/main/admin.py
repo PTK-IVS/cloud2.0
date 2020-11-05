@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from .models import (
-    AdemcoCode
+    MessageETHContactID
 )
 
-admin.site.register(AdemcoCode)
+admin.site.register(MessageETHContactID)
