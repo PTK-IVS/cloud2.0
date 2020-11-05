@@ -5,6 +5,8 @@
 
 Запуск  тестового приложения: `docker-compose up -d --build`
 
+Создание миграций: `docker-compose exec cloud python manage.py makemigrations`
+
 Ручной запуск миграций: `docker-compose exec cloud python manage.py migrate --noinput`
 
 Проверить volume: `docker volume inspect cloud20_postgres_data`
