@@ -1,0 +1,16 @@
+{% extends 'main/base.html' %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+    <h1>{{ title }}</h1>
+    {% if codes %}
+        {% for code in codes %}
+            <div class="alert alert-warning">
+                <h3> {{ code.contact_code }}</h3>
+                <p> {{ code.text_code }}</p>
+                <p> {{ code.message_type }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p> Empty database!</p>
+    {% endif %}
+{% endblock %}
