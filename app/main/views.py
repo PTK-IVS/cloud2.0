@@ -1,17 +1,20 @@
 from django.shortcuts import render, redirect
 
-from .forms import AdemcoCodeForm
+from .forms import MessageETHContactIDForm
 from .models import (
-    AdemcoCode
+    MessageETHContactID
 )
 
 
 def index(request):
-    codes = AdemcoCode.objects.order_by('id')
+    messages = MessageETHContactID.objects.order_by('id')
+    context = {
+        'title': 'Главная страница сайта',
+        'messages': messages
+    }
     return render(
         request, 'main/index.html',
-        {'title': 'Главная страница сайта',
-         'codes': codes}
+        context
     )
 
 
@@ -25,13 +28,13 @@ def monitoring(request):
 def administrator(request):
     error: str = ''
     if request.method == "POST":
-        form = AdemcoCodeForm(request.POST)
+        form = MessageETHContactIDForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('home')
         else:
             error = "Form isn't correct"
-    form: AdemcoCodeForm = AdemcoCodeForm()
+    form = MessageETHContactIDForm()
     context = {
         'form': form,
         'title': 'Страница администратора',

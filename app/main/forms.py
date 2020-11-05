@@ -1,31 +1,77 @@
 from django.forms import (
-    ModelForm, TextInput, NumberInput
+    ModelForm, TextInput, NumberInput, TimeInput
 )
 
-from .models import AdemcoCode
+from .models import MessageETHContactID
 
 
-class AdemcoCodeForm(ModelForm):
+class MessageETHContactIDForm(ModelForm):
     class Meta:
-        model = AdemcoCode
-        fields = ["contact_code", "text_code", "message_type"]
+        model = MessageETHContactID
+        fields = [
+            "message",
+            "user",
+            "uid",
+            "object",
+            "type",
+            "code",
+            "section",
+            "area",
+            "time_stamp"
+        ]
         widgets = {
-            "contact_code": NumberInput(
+            "message": TextInput(
                 attrs={
                     'class': 'form-control',
-                    'placeholder': 'Input contact code'
+                    'placeholder': 'Input message'
                 }
             ),
-            "text_code": TextInput(
+            "user": NumberInput(
                 attrs={
                     'class': 'form-control',
-                    'placeholder': 'Input text code'
+                    'placeholder': 'Input user'
                 }
             ),
-            "message_type": NumberInput(
+            "uid": NumberInput(
                 attrs={
                     'class': 'form-control',
-                    'placeholder': 'Input message type'
+                    'placeholder': 'Input uid'
                 }
-            )
+            ),
+            "object": NumberInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Input object'
+                }
+            ),
+            "type": NumberInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Input type'
+                }
+            ),
+            "code": NumberInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Input code'
+                }
+            ),
+            "section": NumberInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Input section'
+                }
+            ),
+            "area": NumberInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Input area'
+                }
+            ),
+            "time_stamp": TimeInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Input timestamp'
+                }
+            ),
         }

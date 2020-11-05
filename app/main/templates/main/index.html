@@ -2,12 +2,18 @@
 {% block title %}{{ title }}{% endblock %}
 {% block content %}
     <h1>{{ title }}</h1>
-    {% if codes %}
-        {% for code in codes %}
-            <div class="alert alert-warning">
-                <h3> {{ code.contact_code }}</h3>
-                <p> {{ code.text_code }}</p>
-                <p> {{ code.message_type }}</p>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-warning mt-2">
+                <h3> {{ message.message }}</h3>
+                <p> {{ message.user }}</p>
+                <p> {{ message.uid }}</p>
+                <p> {{ message.object }}</p>
+                <p> {{ message.type }}</p>
+                <p> {{ message.code }}</p>
+                <p> {{ message.section }}</p>
+                <p> {{ message.area }}</p>
+                <p> {{ message.time_stamp }}</p>
             </div>
         {% endfor %}
     {% else %}

@@ -4,9 +4,15 @@
     <h1>{{ title }}</h1>
     <form method="post">
         {% csrf_token %}
-        {{ form.contact_code }}<br/>
-        {{ form.text_code }}<br/>
-        {{ form.message_type }}
+        {{ form.message }}<br/>
+        {{ form.user }}<br/>
+        {{ form.uid }}<br/>
+        {{ form.object }}<br/>
+        {{ form.type }}<br/>
+        {{ form.code }}<br/>
+        {{ form.section }}<br/>
+        {{ form.area }}<br/>
+        {{ form.time_stamp }}<br/>
         <button type="submit" class="btn btn-success">Добавить</button>
         <span> {{ error }}</span>
     </form>
