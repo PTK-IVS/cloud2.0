@@ -3,6 +3,8 @@
 # Инструкция
 Просмотр логов: `docker-compose logs -f`
 
+Создание суперпользователя: `docker-compose exec cloud python manage.py createsuperuser`
+
 Запуск  тестового приложения: `docker-compose up -d --build`
 
 Создание миграций: `docker-compose exec cloud python manage.py makemigrations`
