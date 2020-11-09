@@ -54,6 +54,7 @@ class MessageETHContactID(models.Model):
 class Object(models.Model):
     object: int = models.OneToOneField(
         MessageETHContactID,
+        related_name='object',
         on_delete=models.CASCADE
     )
     name: str = models.CharField(
@@ -91,21 +92,23 @@ class Object(models.Model):
 
 
 class AdemcoCode(models.Model):
-    code = models.OneToOneField(
+    contact_code = models.OneToOneField(
         MessageETHContactID,
+        related_name='code',
         on_delete=models.CASCADE
     )
     text_code = models.TextField(
         "Текст",
         max_length=128
     ),
-    type = models.OneToOneField(
+    message_type = models.OneToOneField(
         MessageETHContactID,
+        related_name='type',
         on_delete=models.CASCADE
     )
 
     def __str__(self):
-        return self.code
+        return self.contact_code
 
     class Meta:
         verbose_name = "Код"
@@ -139,6 +142,7 @@ class Section(models.Model):
 class User(models.Model):
     user: str = models.OneToOneField(
         MessageETHContactID,
+        related_name='user',
         on_delete=models.CASCADE
     )
     email: str = models.EmailField(
@@ -150,6 +154,7 @@ class User(models.Model):
     )
     role: Role = models.OneToOneField(
         Role,
+        related_name='role',
         on_delete=models.CASCADE
     )
     phone: str = models.TextField(
@@ -182,6 +187,7 @@ class Status(models.Model):
 class Area(models.Model):
     section: int = models.ForeignKey(
         Section,
+        related_name='number',
         on_delete=models.CASCADE
     )
     name: str = models.CharField(
@@ -205,6 +211,7 @@ class DeviceAlarmStatus(models.Model):
     )
     section: int = models.OneToOneField(
         Section,
+        related_name='number',
         on_delete=models.CASCADE
     )
     area: int = models.IntegerField(
@@ -212,6 +219,7 @@ class DeviceAlarmStatus(models.Model):
     )
     status: Status = models.ForeignKey(
         Status,
+        related_name='status',
         on_delete=models.CASCADE
     )
 
@@ -219,10 +227,12 @@ class DeviceAlarmStatus(models.Model):
 class UserWithObject(models.Model):
     user: int = models.ForeignKey(
         User,
+        related_name='user',
         on_delete=models.CASCADE
     )
     object: int = models.ForeignKey(
         Object,
+        related_name='object',
         on_delete=models.CASCADE
     )
 
@@ -230,14 +240,17 @@ class UserWithObject(models.Model):
 class KeyAndCode(models.Model):
     user: int = models.OneToOneField(
         UserWithObject,
+        related_name='user',
         on_delete=models.CASCADE
     )
     object: int = models.OneToOneField(
         UserWithObject,
+        related_name='object',
         on_delete=models.CASCADE
     )
     section: int = models.OneToOneField(
         Section,
+        related_name='number',
         on_delete=models.CASCADE
     )
     code: int = models.IntegerField(
@@ -266,6 +279,7 @@ class JSONPolygon(models.Model):
 class Trek(models.Model):
     trek: int = models.OneToOneField(
         Object,
+        related_name='trek',
         on_delete=models.CASCADE
     )
     lat: float = models.FloatField(
@@ -282,6 +296,7 @@ class Trek(models.Model):
 class Connection(models.Model):
     connection: str = models.OneToOneField(
         Object,
+        related_name='connection',
         on_delete=models.CASCADE
     )
 
@@ -293,5 +308,6 @@ class Image(models.Model):
     )
     image: Object = models.OneToOneField(
         Object,
+        related_name='image',
         on_delete=models.CASCADE
     )
