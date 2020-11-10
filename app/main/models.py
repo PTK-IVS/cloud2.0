@@ -12,6 +12,7 @@ class Object(models.Model):
     connection_type = models.IntegerField("Тип соединения")
     image_map = models.IntegerField("Номер изображения")
 
+
     def __str__(self):
         return self.object
 
